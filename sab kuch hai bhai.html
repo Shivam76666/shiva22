@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maharashtra Right to Public Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            height: 130px;
+            width:auto;
+        }
+        header h1 {
+            color: #006400;
+            font-size: 40px;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .scroll {
+            width: 100%; /* Full width of the parent container */
+            max-width:auto; /* Maximum width for responsiveness */
+            margin:0px auto; /* Center align with margin */
+            background: linear-gradient(90deg, #f0f0f0, #ffffff); /* Gradient background */
+            border: 2px solid #007bff; /* Blue border */
+            border-radius: 8px; /* Rounded edges */
+            padding: 10px 15px; /* Inner spacing */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        /* Styling for the marquee text */
+        .marquee {
+            color: #007bff; /* Blue text color */
+            font-size: 18px; /* Larger font size */
+            font-family: 'Roboto', sans-serif; /* Clean font style */
+            text-align: center; /* Center-align text */
+            font-weight:600; /* Semi-bold text */
+            letter-spacing: 1px; /* Increase letter spacing */
+            text-transform: uppercase; /* Convert text to uppercase */
+        }
+
+        /* Hover effect for marquee text */
+        .scroll:hover .marquee {
+            color: #ff4500; /* Change color to orange on hover */
+            font-size: 19px; /* Slightly enlarge the font on hover */
+            transition: color 0.3s, font-size 0.3s ease-in-out; /* Smooth transition */
+			}
+
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            margin: 20px;
+        }
+
+        .left-section {
+            width: 70%;
+            padding: 20px;
+            background-color: #e6f7ff;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .left-section h2 {
+            color: #006400;
+            margin-bottom: 15px;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .service-item {
+            background-color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(33% - 20px);
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .right-section {
+            width: 30%;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .login-box {
+            margin-bottom: 20px;
+        }
+
+        .login-box h3 {
+            color: #006400;
+            margin-bottom: 10px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #006400;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .forgot-links {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .forgot-links a {
+            color: #006400;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .close-modal {
+            background-color: red;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            margin-top: 20px;
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+
+    </style>
+    <script>
+        // Simulating simple content toggle on clicking navigation links
+        function navigateTo(section) {
+            alert("You clicked " + section);
+        }
+
+        function openForgotPassword() {
+            alert('Redirect to Forgot Password page');
+        }
+
+        function openForgotUsername() {
+            alert('Redirect to Forgot Username page');
+        }
+
+        function openServiceModal(service) {
+            const modal = document.getElementById(`${service}Modal`);
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        }
+
+        function closeModal(service) {
+            const modal = document.getElementById(`${service}Modal`);
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="logo.png" alt="Logo">
+        </div>
+        <nav>
+            <a href="javascript:void(0)" onclick="navigateTo('Home')">Home</a>
+            <a href="javascript:void(0)" onclick="navigateTo('About')">About</a>
+            <a href="javascript:void(0)" onclick="navigateTo('Services')">Services</a>
+            <a href="javascript:void(0)" onclick="navigateTo('Contact')">Contact</a>
+        </nav>
+    </header>
+    <div class="scroll">
+                    <marquee class="marquee alertDesk" scrollamount="3" 												onmouseover="this.stop();" onmouseout="this.start();">
+                        "Update Smart, Update Fast – All in One Place!"
+						</marquee>
+                </div>
+
+    <div class="main-container">
+        <div class="left-section">
+            <h2>Services Available Online</h2>
+            <div class="services">
+                <div class="service-item" onclick="openServiceModal('Aadhaar')">Aadhaar Card</div>              
+  <div class="service-item" onclick="openServiceModal('Voter')">Voter Card</div>
+<div class="service-item" onclick="openServiceModal('IncomeCertificate')">Income Certificate</div>
+                <div class="service-item" onclick="openServiceModal('Domicile')">Domicile Certificate</div>
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="login-box">
+                <h3>Login</h3>
+                <input id="userID" type="text" placeholder="User ID">
+                <input id="password" type="password" placeholder="Password">
+                <button onclick="alert('Login Successful')">Login</button>
+                	<div class="login-options">
+        <a href="Forgot User Name.html" onclick="forgotUserName()">Forgot User Name ?<a> \
+        <a href="Forgot Password.html" onclick="forgotPassword()">Forgot Password ?</a><br>
+		 <a href="Registration.html" onclick="register()">Register</a>
+    </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Maharashtra Right to Public Services. All rights reserved.
+    </footer>
+    <div id="AadhaarModal" class="modal">
+        <div class="modal-content">
+            <h3>Aadhaar Card Options</h3>
+		<button class="button" onclick="window.location.href='long page.html.';">New Aadhaar</button>
+        <button class="button" onclick="window.location.href='long page.html';">Update Aadhaar</button>
+        <button class="button" onclick="window.location.href='long page.html';">Update Status </button>
+
+            <button class="close-modal" onclick="closeModal('Aadhaar')">Close</button>
+        </div>
+    </div>
+
+				<div id="VoterModal" class="modal">
+        <div class="modal-content">
+            <h3>Voter Card Options</h3>
+				<button class="button" onclick="window.location.href='long page.html';">New Voter</button>								<button class="button" onclick="window.location.href='long page.html';">Update Voter</button>	
+            <button class="button" onclick="window.location.href='long page.html';">Check Status</button>
+        <button class="close-modal" onclick="closeModal('Voter')">Close</button>
+        </div>
+    </div>
+
+    <div id="IncomeCertificateModal" class="modal">
+        <div class="modal-content">
+            <h3>Income Certificate Options</h3>
+            <button class="button" onclick="window.location.href='long page.html';">New IncomeCertificate</button>				
+		<button class="button" onclick="window.location.href='long page.html';">Update IncomeCertificate</button>	
+            <button class="button" onclick="window.location.href='long page.html';">Check Status</button>	
+            <button class="close-modal" onclick="closeModal('IncomeCertificate')">Close</button>
+            
+        </div>
+    </div>
+
+    <div id="DomicileModal" class="modal">
+        <div class="modal-content">
+            <h3>Domicile Certificate Options</h3>
+            <button class="button" onclick="window.location.href='long page.html';">New Domicile</button>								<button class="button" onclick="window.location.href='long page.html';">Update Domicile</button>	
+            <button class="button" onclick="window.location.href='long page.html';">Check Status</button>	
+            <button class="close-modal" onclick="closeModal('Domicile')">Close</button>
+        </div>
+    </div>
+
+</body>
+</html>
